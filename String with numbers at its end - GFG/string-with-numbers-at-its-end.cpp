@@ -38,8 +38,6 @@ public:
 	        }
 	    }
 	    
-	    if(cnt < num.length())
-	    return 0;
 	    
 	    if(num.length()<=6)
 	    {
