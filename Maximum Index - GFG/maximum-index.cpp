@@ -25,8 +25,8 @@ public:
         
         for(int i=0;i<n;i++)
         { 
-            if((n-1-i) < ans)
-            break;
+            // if((n-1-i) < ans)
+            // break;
             
            while(j>=0)
            {
