@@ -15,25 +15,6 @@ class Solution{
         int i = 0;
         int j = 0;
         vector<int> mpp(26,0);
-        //  while(j<n)
-        // {
-            
-            
-        //     if(mpp[S[j]]==0)
-        //     {
-        //         cnt++;
-        //         ans = max(ans,cnt);
-        //         mpp[S[j]]++;
-        //         j++;
-        //     }
-        //     else if(i<j)
-        //     {
-        //         mpp[S[i]]--;
-        //         cnt--;
-        //         i++;
-        //     }
-        //     else j++;
-        // }
         for(j=0;j<n;j++)
         {
             while(i<j && mpp[S[j]-'a']>0)
