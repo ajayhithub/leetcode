@@ -15,16 +15,36 @@ class Solution{
         int i = 0;
         int j = 0;
         vector<int> mpp(26,0);
-        for(j=0;j<n;j++)
+         while(j<n)
         {
-            while(i<j && mpp[S[j]-'a']>0)
+            
+            
+            if(mpp[S[j]-'a']==0)
+            {
+                cnt++;
+                ans = max(ans,cnt);
+                mpp[S[j]-'a']++;
+                j++;
+            }
+            else if(i<j)
             {
                 mpp[S[i]-'a']--;
+                cnt--;
                 i++;
             }
-            mpp[S[j]-'a']++;
-            ans=max(ans,j-i+1);
+            else j++;
         }
+        // for(j=0;j<n;j++)
+        // {
+        //     while(i<j && mpp[S[j]-'a']>0)
+        //     {
+        //         mpp[S[i]-]--;
+        //         i++;
+        //     }
+        //     mpp[S[j]-'a']++;
+        //     ans=max(ans,j-i+1);
+        // }
+         ans = max(ans,cnt);
         return ans;
     }
 };
