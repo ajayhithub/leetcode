@@ -12,16 +12,16 @@ class Solution
             // your code here 
             sort(arr,arr+n);
             
-            int cnt = 0;
-            for(int i=0;i<n;i++)
-            {
-                if(arr[i]<0)
-                cnt++;
-            }
-            if(cnt == n)
-            return arr[n-1]+arr[n-2]; 
-            else if(cnt == 0)
-            return arr[0]+arr[1];
+            // int cnt = 0;
+            // for(int i=0;i<n;i++)
+            // {
+            //     if(arr[i]<0)
+            //     cnt++;
+            // }
+            // if(cnt == n)
+            // return arr[n-1]+arr[n-2]; 
+            // else if(cnt == 0)
+            // return arr[0]+arr[1];
              
              int ans = 1e8;
              int i = 0;
