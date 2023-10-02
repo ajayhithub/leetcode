@@ -16,21 +16,25 @@ public:
 	    int ans = 0;
 	    for(int i=0;i<n;i++)
 	    {
-	       sum = (sum+arr[i]);
-	       int x=((sum%k)+k)%k;
-	        if(x == 0)
+	       sum = (((sum+arr[i])%k)+k)%k;
+	        if(sum == 0)
 	        ans = max(ans,i+1);
 	   
 	       
 	       
-	       if(mpp.find(x) != mpp.end())
+	       if(mpp.find(sum) != mpp.end())
 	       {
-	           ans = max(ans,i-mpp[x]);    
+	           ans = max(ans,i-mpp[sum]);    
 	       }
 	       
-	        if(mpp.find(x) == mpp.end())
+	        if(mpp.find(sum%k) == mpp.end())
 	       {
-	           mpp[x] = i; 
+	           if(sum < 0)
+	           {
+	             mpp[sum] = i; 
+	           }
+	           else
+	           mpp[sum] = i; 
 	       }
 	       
 	    }
