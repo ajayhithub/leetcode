@@ -127,30 +127,25 @@ vector<int> noSibling(Node* node)
         {
             Node* node = q.front();
             q.pop();
-            
-            if(node->left ==NULL && node->right==NULL)
-            {
-                continue;
-            }
-            else if(node->left !=NULL && node->right!=NULL)
-            {
-                 q.push(node->left);
-                 q.push(node->right);
-                continue;
-            }
-            else
-            {
-                if(node->left!=NULL)
-                {
-                    ans.push_back(node->left->data); 
-                    q.push(node->left);
-                }
-                else
-                {
-                    ans.push_back(node->right->data); 
-                    q.push(node->right);
-                }
-            }
+          
+             if(node->left !=NULL)
+             q.push(node->left);
+             if(node->right !=NULL)
+              q.push(node->right);
+         
+           
+           if(node->left == NULL && node->right == NULL)
+           {
+               continue;
+           }
+           else if(node->left == NULL || node->right == NULL)
+           {
+               if(node->left != NULL)
+               ans.push_back(node->left->data);
+               else
+               ans.push_back(node->right->data);
+           }
+           
         }
     }
     
