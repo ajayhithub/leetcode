@@ -12,8 +12,7 @@ public:
 
   int fun(int N, int A[], int cnt, int i,int pic)
   {
-     if(i>=N)
-     return cnt;
+     if(i>=N) return 1;
      
      int l = INT_MIN, r = INT_MIN;
        
@@ -21,7 +20,7 @@ public:
       if(abs(A[pic]-A[i]) == 1)
       {
          // cout<<A[i]<<"A"<<cnt<<" ";
-          l = fun(N,A,cnt+1,i+1,i);
+          l = fun(N,A,cnt+1,i+1,i)+1;
       }
       if(i==pic)
       {
