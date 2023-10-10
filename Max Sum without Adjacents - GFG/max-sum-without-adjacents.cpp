@@ -29,8 +29,20 @@ public:
 	
 	int findMaxSum(vector<int>&arr, int n) {
 	    // code here
-	    vector<int> dp(n,-1);
-	    return fun(arr,n-1,dp);
+	    vector<int> dp(n,0);
+	    dp[0] = arr[0];
+	    
+	    for(int i=1;i<n;i++)
+	    {
+	        int pic = arr[i];
+	        if(i>1)
+	        pic = arr[i]+dp[i-2];
+	        
+	        int non = dp[i-1];
+	        dp[i] = max(pic,non);
+	    }
+	    
+	    return dp[n-1];
 	}
 };
 
