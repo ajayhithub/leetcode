@@ -37,22 +37,18 @@ Node *insert(Node *tree, int val) {
 class Solution{
 public:
 
-    int fun(Node *root, int p)
+    int fun(Node *root)
     {
        if(root==NULL)
        return 1e7;
        if(root->left==NULL && root->right==NULL)
        return root->data;
-    
-     //  cout<<root->data<<endl;
+
        
-       int l = fun(root->left,p);
-       int r =  fun(root->right,p);
+       int l = fun(root->left);
+       int r =  fun(root->right);
       
-//cout<<l<<" "<<r<<endl;
-       if(p==0)
-       return min(l,r)+root->data;
-       else
+
        return min(l,r)+root->data;
     }
 
@@ -60,9 +56,6 @@ public:
         // Code here
         
         int pre = 0;
-        int p = 0;
-        if(root->data > target)
-        p = 1;
         
        while(root!=NULL)
        {
@@ -79,7 +72,7 @@ public:
            else 
            {
                
-             int post = fun(root,p);
+             int post = fun(root);
              post = post-root->data;
              
        //      cout<<pre<<" "<<post<<endl;
