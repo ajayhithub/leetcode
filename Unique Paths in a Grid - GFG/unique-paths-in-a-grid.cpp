@@ -27,18 +27,12 @@ class Solution {
 //       return (l+r)%mod;
 //   }
   
-    int uniquePaths(int n, int m, vector<vector<int>> &grid) {
-        // code here
-        
-         if(grid[n-1][m-1]==0 || grid[0][0]==0)
-         return 0;
-        
-       // vector<vector<int>> dp(n,vector<int>(m,-1));
-        int mod = pow(10,9)+7;
-        // return fun(n-1,m-1,grid,dp,mod);
-        
+  int tabu(int n, int m, vector<vector<int>> &grid)
+  {
         vector<vector<int>> dp(n,vector<int>(m,0));
         dp[0][0] = 1;
+       
+        int mod = pow(10,9)+7;
         
         for(int i=0;i<n;i++)
         {
@@ -61,8 +55,22 @@ class Solution {
             }
         }
         
-    
         return dp[n-1][m-1];
+  }
+  
+    int uniquePaths(int n, int m, vector<vector<int>> &grid) {
+        // code here
+        
+         if(grid[n-1][m-1]==0 || grid[0][0]==0)
+         return 0;
+        
+       // vector<vector<int>> dp(n,vector<int>(m,-1));
+       // int mod = pow(10,9)+7;
+        // return fun(n-1,m-1,grid,dp,mod);
+        
+        return tabu(n,m,grid);
+       
+        
     }
 };
 
