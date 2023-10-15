@@ -32,20 +32,10 @@ public:
 	    dp[i][j] = num + Matrix[i][j];
 	    return num + Matrix[i][j];
 	}
-
-    int maximumPath(int N, vector<vector<int>> Matrix)
-    {
-        // code here
-    //      vector<vector<int>> dp(N,vector<int>(N,-1));
-    //      int num = 0;
-	   // for(int p=0;p<N;p++)
-	   // {
-	   //    int a = fun(N-1,p,Matrix,dp,N);
-	   //     num = max(num,a);
-	   // }
-	    
-    //     return num;
-     vector<vector<int>> dp(N,vector<int>(N,0));
+	
+	int fun1(int N, vector<vector<int>> Matrix)
+	{
+	     vector<vector<int>> dp(N,vector<int>(N,0));
         for(int i=0;i<N;i++)
         dp[0][i] = Matrix[0][i];
         
@@ -75,6 +65,22 @@ public:
 	    }
 	    
         return num;
+	}
+
+    int maximumPath(int N, vector<vector<int>> Matrix)
+    {
+        // code here
+    //      vector<vector<int>> dp(N,vector<int>(N,-1));
+    //      int num = 0;
+	   // for(int p=0;p<N;p++)
+	   // {
+	   //    int a = fun(N-1,p,Matrix,dp,N);
+	   //     num = max(num,a);
+	   // }
+	    
+    //     return num;
+    
+    return fun1(N,Matrix);
     
     }
 };
