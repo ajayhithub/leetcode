@@ -24,7 +24,7 @@ class Solution {
        return min(b,c) + triangle[i][j];
   }
   
-  int fun(int n, vector<vector<int>>& triangle)
+  int fun1(int n, vector<vector<int>>& triangle)
   {
        vector<vector<int>> dp(n,vector<int>(n,0));
        int l = triangle[n-1].size();
@@ -46,13 +46,39 @@ class Solution {
        
        return dp[0][0];
   }
+  
+  int fun2(int n, vector<vector<int>>& triangle)
+  {
+      vector<int> cur(n,0) , pre(n,0);
+      for(int i=0;i<n;i++)
+      {
+       pre[i] = triangle[n-1][i];
+      }
+      
+      for(int i=n-2;i>=0;i--)
+      {
+          int p = triangle[i].size();
+          for(int j=0;j<p;j++)
+          {
+              int  b = pre[j];
+              int  c = pre[j+1];
+       
+              cur[j] = min(b,c) + triangle[i][j];      
+          }
+          pre = cur;
+      }
+      
+      return pre[0];
+  }
+  
     int minimizeSum(int n, vector<vector<int>>& triangle) {
         // Code here
     //     vector<vector<int>> dp(n,vector<int>(n,-1));
     //   return fun(0,0,n,triangle,dp);
        
-       return fun(n,triangle);
-    
+     //  return fun1(n,triangle);
+     
+       return fun2(n,triangle);
     }
 };
 
