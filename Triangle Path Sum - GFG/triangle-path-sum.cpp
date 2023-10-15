@@ -24,11 +24,8 @@ class Solution {
        return min(b,c) + triangle[i][j];
   }
   
-    int minimizeSum(int n, vector<vector<int>>& triangle) {
-        // Code here
-    //     vector<vector<int>> dp(n,vector<int>(n,-1));
-    //   return fun(0,0,n,triangle,dp);
-       
+  int fun(int n, vector<vector<int>>& triangle)
+  {
        vector<vector<int>> dp(n,vector<int>(n,0));
        int l = triangle[n-1].size();
        for(int i=0;i<l;i++)
@@ -48,6 +45,14 @@ class Solution {
        }
        
        return dp[0][0];
+  }
+    int minimizeSum(int n, vector<vector<int>>& triangle) {
+        // Code here
+    //     vector<vector<int>> dp(n,vector<int>(n,-1));
+    //   return fun(0,0,n,triangle,dp);
+       
+       return fun(n,triangle);
+    
     }
 };
 
