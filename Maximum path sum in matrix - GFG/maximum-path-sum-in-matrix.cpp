@@ -67,6 +67,43 @@ public:
         return num;
 	}
 
+    	int fun2(int N, vector<vector<int>> Matrix)
+    	{
+    	    vector<int> cur(N,0), pre(N,0);
+    	    
+    	    for(int i=0;i<N;i++)
+    	     pre[i] = Matrix[0][i];
+    	      
+    	 for(int i=1;i<N;i++)
+         {
+             for(int j=0;j<N;j++)
+             {
+               int num = 0;
+	           for(int p=-1;p<=1;p++)
+	            {
+	              int a = 0;
+	              if(p+j>=0 && p+j<N)
+	               a = pre[j+p];
+	         
+	               num = max(num,a);
+	            }
+	    
+	            cur[j] = num + Matrix[i][j];
+             }
+            pre = cur; 
+             
+          }
+    	  
+    	 int num = 0;
+	    for(int p=0;p<N;p++)
+	    {
+	        int a = pre[p];
+	        num = max(num,a);
+	    }
+	    
+        return num;
+ }
+
     int maximumPath(int N, vector<vector<int>> Matrix)
     {
         // code here
@@ -80,7 +117,9 @@ public:
 	    
     //     return num;
     
-    return fun1(N,Matrix);
+   //   return fun1(N,Matrix);
+    
+    return fun2(N,Matrix);
     
     }
 };
