@@ -30,12 +30,36 @@ class Solution{
 	    return (l+r)%mod;   
 	}
 	
+	int fun1(int arr[], int n, int sum)
+	{
+	     int mod = pow(10,9)+7;
+         vector<vector<int>> dp(n+1,vector<int>(sum+1,0));
+         dp[n][0]=1;
+         
+         for(int i=n-1;i>=0;i--)
+         {
+             for(int t=0;t<=sum;t++)
+             {          
+                 if(arr[i]<=t){
+                     dp[i][t]=(dp[i][t]+dp[i+1][t-arr[i]])%mod;
+                 }
+                 dp[i][t]=(dp[i][t]+dp[i+1][t])%mod;
+             }
+          
+         }
+         
+         return dp[0][sum];
+	}
+	
 	int perfectSum(int arr[], int n, int sum)
 	{
         // Your code goes here
         int mod = pow(10,9)+7;
-        vector<vector<int>> dp(n,vector<int>(sum+1,-1));
-        return fun(arr,n,0,sum,mod,dp);
+      //  vector<vector<int>> dp(n,vector<int>(sum+1,-1));
+     //   return fun(arr,n,0,sum,mod,dp);
+        
+        
+        return fun1(arr,n,sum);
 	}
 	  
 };
