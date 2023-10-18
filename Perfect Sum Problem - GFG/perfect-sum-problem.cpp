@@ -49,10 +49,35 @@ class Solution{
                 
                  dp[i][t] = (non+tak)%mod;
              }
-          
          }
          
          return dp[0][sum];
+	}
+	
+		int fun2(int arr[], int n, int sum)
+	{
+	     int mod = pow(10,9)+7;
+         vector<int> cur(sum+1,0), pre(sum+1,0);
+         
+         pre[0] = 1;
+         
+         for(int i=n-1;i>=0;i--)
+         {
+             for(int t=0;t<=sum;t++)
+             {   
+                 int tak = 0;
+                 if(arr[i] <= t)
+                 {
+                   tak = pre[t-arr[i]];          
+                 }
+                 int non  = pre[t];
+                
+                 cur[t] = (non+tak)%mod;
+             }
+             pre = cur;
+         }
+         
+         return pre[sum];
 	}
 	
 	int perfectSum(int arr[], int n, int sum)
@@ -62,7 +87,9 @@ class Solution{
       //  vector<vector<int>> dp(n,vector<int>(sum+1,-1));
      //   return fun(arr,n,0,sum,mod,dp);
         
-     return fun1(arr,n,sum);
+   //  return fun1(arr,n,sum);
+      return fun2(arr,n,sum);
+      
 	}
 	  
 };
