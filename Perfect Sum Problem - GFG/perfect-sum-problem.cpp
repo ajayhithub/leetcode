@@ -41,15 +41,13 @@ class Solution{
              for(int t=0;t<=sum;t++)
              {   
                  int tak = 0;
-                 if(arr[i]<=t)
+                 if(arr[i] <= t)
                  {
-                   tak = dp[i+1][t-arr[i]]%mod;          
-                 //  dp[i][t]=(dp[i][t]+dp[i+1][t-arr[i]])%mod;
+                   tak = dp[i+1][t-arr[i]];          
                  }
-                  int non  = dp[i+1][t]%mod;
-                // dp[i][t]=(dp[i][t]+dp[i+1][t])%mod;   
+                 int non  = dp[i+1][t];
                 
-                dp[i][t] = (non+tak)%mod;
+                 dp[i][t] = (non+tak)%mod;
              }
           
          }
