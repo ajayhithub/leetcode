@@ -39,11 +39,17 @@ class Solution{
          for(int i=n-1;i>=0;i--)
          {
              for(int t=0;t<=sum;t++)
-             {          
-                 if(arr[i]<=t){
-                     dp[i][t]=(dp[i][t]+dp[i+1][t-arr[i]])%mod;
+             {   
+                 int tak = 0;
+                 if(arr[i]<=t)
+                 {
+                   tak = dp[i+1][t-arr[i]]%mod;          
+                 //  dp[i][t]=(dp[i][t]+dp[i+1][t-arr[i]])%mod;
                  }
-                 dp[i][t]=(dp[i][t]+dp[i+1][t])%mod;
+                  int non  = dp[i+1][t]%mod;
+                // dp[i][t]=(dp[i][t]+dp[i+1][t])%mod;   
+                
+                dp[i][t] = (non+tak)%mod;
              }
           
          }
@@ -58,8 +64,7 @@ class Solution{
       //  vector<vector<int>> dp(n,vector<int>(sum+1,-1));
      //   return fun(arr,n,0,sum,mod,dp);
         
-        
-        return fun1(arr,n,sum);
+     return fun1(arr,n,sum);
 	}
 	  
 };
