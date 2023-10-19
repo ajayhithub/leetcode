@@ -65,6 +65,39 @@ class Solution{
 		   
 		}
 	
+	  int fun2(vector<int>nums, int amount)
+	  {
+	        vector<int> cur(amount+1,1e7), pre(amount+1,1e7);
+		   
+		   for(int t=0;t<=amount;t++)
+		   {
+              if(t%nums[0]==0)
+	          pre[t] = t/nums[0];
+		   }
+
+		    int n = nums.size();
+		    for(int i=1;i<n;i++)
+		    {
+		        for(int t=0;t<=amount;t++)
+		        {
+		           int non = pre[t];
+		           int tak = 1e7;
+		           if(nums[i]<=t)
+		           tak = 1 + cur[t-nums[i]];
+		            
+		            
+		           cur[t] = min(non,tak);
+		        }
+		        pre = cur;
+		    }
+		    
+		    if(pre[amount] >= 1e7)
+		    return -1;
+		    
+		    
+		   return cur[amount]; 
+	  }
+	
 	int MinCoin(vector<int>nums, int amount)
 	{
 	    // Code here
@@ -75,7 +108,9 @@ class Solution{
 	   
 	   // return ans;
 	    
-	    return fun1(nums,amount);
+	  //  return fun1(nums,amount);
+	  
+	  return fun2(nums,amount);
 	}
 };
 
