@@ -24,12 +24,30 @@ class Solution
         return (l+r)%mod;
     }
     
+    int fun1(int n)
+    {
+        vector<int> dp(n+1,-1);
+        int mod = pow(10,9)+7;
+        dp[0] = 1;
+        
+        for(int i=1;i<=n;i++)
+        {
+            int l = dp[i-1];
+            int r = dp[i-2];
+        
+           dp[i] = (l+r)%mod;
+        }
+         
+         return dp[n];
+    }
     int countWays(int n)
     {
         // your code here
-        vector<int> dp(n+1,-1);
-        int mod = pow(10,9)+7;
-        return fun(n,dp,mod);
+        // vector<int> dp(n+1,-1);
+        // int mod = pow(10,9)+7;
+        // return fun(n,dp,mod);
+        
+        return fun1(n);
     }
 };
 
